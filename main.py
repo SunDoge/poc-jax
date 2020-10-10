@@ -38,7 +38,7 @@ class MLP(Module):
 
 
 @jax.jit
-def loss_fn(model: MLP, x: DeviceArray, y: DeviceArray) -> Tuple[DeviceArray, MLP]:
+def loss_fn(model: MLP, x: DeviceArray, y: DeviceArray) -> Tuple[DeviceArray, Tuple[MLP, DeviceArray]]:
     output = model(x)
     loss = cross_entropy(output, y)
     acc = accuracy(output, y)
@@ -109,7 +109,7 @@ def main():
 
         for x, y in val_dl:
             x, y = np.array(x), np.array(y)
-            out = mlp(x)
+            # out = mlp(x)
 
             loss, (mlp, acc) = loss_fn(mlp, x, y)
 

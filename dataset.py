@@ -40,7 +40,7 @@ class FlattenAndCast:
 
 
 def get_datasets():
-    train_ds = MNIST('data/mnist', download=True, transform=FlattenAndCast())
-    val_ds = MNIST('data/mnist', download=False, transform=FlattenAndCast())
+    train_ds = MNIST('data/mnist', download=True, transform=FlattenAndCast(), train=True)
+    val_ds = MNIST('data/mnist', download=False, transform=FlattenAndCast(), train=False)
 
     return train_ds, val_ds
